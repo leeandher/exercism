@@ -1,0 +1,23 @@
+{
+  "name": "exercism",
+  "version": "1.0.0",
+  "description": "All my exercism submissions",
+  "main": "index.js",
+  "dependencies": {
+    "@types/jest": "^23.3.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leeandher/exercism.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leeandher/exercism/issues"
+  },
+  "homepage": "https://github.com/leeandher/exercism#readme"
+}

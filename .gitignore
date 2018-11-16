@@ -1,2 +1,2 @@
-/*/*/.exercism
-/*/*/node_modules
+.exercism/
+node_modules/
