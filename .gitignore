@@ -1,2 +1,10 @@
+#general
 .exercism/
+
+#typescript
 node_modules/
+
+#csharp
+.vs/
+obj/
+bin/
