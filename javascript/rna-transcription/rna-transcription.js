@@ -1,5 +1,5 @@
 export const toRna = (dnaString) => {
-  if (dnaString.match(/[^A|T|C|G]/gm)) throw Error('Invalid input DNA.');
+  if (/[^A|T|C|G]/gm.test(dnaString)) throw Error('Invalid input DNA.');
   return dnaString
     .split('')
     .map((letter) => {
