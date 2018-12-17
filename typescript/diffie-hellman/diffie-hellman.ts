@@ -2,18 +2,19 @@ class DiffieHellman {
   p: number;
   g: number;
 
-  constructor(prime_p: number, prime_g: number) {
+  constructor(prime_p: number, root_g: number) {
     // Check if the numbers are prime
-    if (!this.isPrime(prime_p) || !this.isPrime(prime_g)) {
+    if (!this.isPrime(prime_p) || !this.isPrime(root_g)) {
       throw new Error("The provided numbers are not prime!");
     }
+
     // Check if the numbers are within the bounds
-    if (!this.isBounded(prime_p) || !this.isBounded(prime_g)) {
+    if (prime_p < 1 || root_g < 1) {
       throw new Error("The provided numbers are not within the bounds!");
     }
 
     this.p = prime_p;
-    this.g = prime_g;
+    this.g = root_g;
   }
 
   private isPrime(num: number): boolean {
@@ -24,16 +25,18 @@ class DiffieHellman {
     return true;
   }
 
-  private isBounded(num: number): boolean {
-    const lowerBound: number = 0;
-    const upperBound: number = 9999;
-    // return num >=;
-    return true;
+  private ensureValidPrivateKey(key: number): void {
+    if (key <= 1 || key >= this.p) throw Error("Invalid private key.");
   }
 
-  public getPublicKeyFromPrivateKey(num: number): string {
-    console.log(num);
-    return "testing";
+  public getPublicKeyFromPrivateKey(key: number): number {
+    this.ensureValidPrivateKey(key);
+    return this.g ** key % this.p;
+  }
+
+  public getSharedSecret(privKey: number, pubKey: number): number {
+    this.ensureValidPrivateKey(privKey);
+    return pubKey ** privKey % this.p;
   }
 }
 
