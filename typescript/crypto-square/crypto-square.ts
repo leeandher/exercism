@@ -5,15 +5,15 @@ class Crypto {
     this.secret = secret;
   }
 
-  normalizePlaintext = (): string =>
+  public normalizePlaintext = (): string =>
     this.secret.replace(/\W|_/gm, "").toLowerCase();
 
-  size = (): number => {
+  public size = (): number => {
     this.secret = this.normalizePlaintext();
     return Math.ceil(this.secret.length ** 0.5);
   };
 
-  plaintextSegments = (): string[] => {
+  public plaintextSegments = (): string[] => {
     const size = this.size();
     const segments = [];
     for (let i: number = 0; i < this.secret.length; i += size) {
@@ -22,7 +22,7 @@ class Crypto {
     return segments;
   };
 
-  ciphertext = (): string => {
+  public ciphertext = (): string => {
     const segments: string[] = this.plaintextSegments();
     let cipher = "";
     for (let i: number = 0; i < segments[0].length; i++) {
