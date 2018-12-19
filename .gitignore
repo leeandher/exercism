@@ -1,6 +1,7 @@
 #general
 .exercism/
 
+#javascript
 #typescript
 node_modules/
 
