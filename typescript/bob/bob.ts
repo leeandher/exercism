@@ -6,20 +6,24 @@ class Bob {
     return "Whatever.";
   }
 
-  private isQuestion(statement: string): boolean {
-    return Boolean(statement);
+  private isBlank(statement: string): boolean {
+    // Check if statement is unchanged after stripping all non-whitespace
+    return statement === statement.replace(/[^\s]/gm, "");
   }
 
   private isAngry(statement: string): boolean {
-    const justCaps = statement.replace(/[^A-Z]/gm, "");
-    const justText = statement.replace(/[^a-zA-Z]/gm, "");
-    if (justCaps === justText) return true;
+    // Check if capital letters are present
+    const justCaps = statement.replace(/[^A-ZÀ-Ý]/gm, "");
+    if (justCaps.length === 0) return false;
 
-    return false;
+    // Check if the statement is unchanged without capital letters
+    const justText = statement.replace(/[^a-zA-ZÀ-Ýà-ÿ]/gm, "");
+    return justCaps === justText;
   }
 
   private isQuestion(statement: string): boolean {
-    return Boolean(statement);
+    // Check if the statement ends with a question mark
+    return /\?$/gm.test(statement);
   }
 }
 
